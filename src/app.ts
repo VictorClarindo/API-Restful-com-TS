@@ -3,6 +3,7 @@ import express from "express";
 import config from "config";
 import router from "./router";
 import db from "../config/db";
+import Logger from "../config/logger";
 
 const app = express();
 const port = config.get("port");
@@ -11,5 +12,5 @@ app.use("/api/", router);
 
 app.listen(port, async() => {
     await db();
-    console.log(`Escutando na porta ${port}`);
+    Logger.info(`Escutando na porta ${port}`);
 })
